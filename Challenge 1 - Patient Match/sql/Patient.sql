@@ -1,11 +1,3 @@
-/*
-    I have no idea what this stuff below is the "MASTER" and "GO"
-    or the conditional statements and 
-
-*/
-
-
-
 -- Create a new database called 'DatabaseName'
 -- Connect to the 'master' database to run this snippet
 USE master
