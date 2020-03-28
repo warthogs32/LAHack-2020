@@ -30,7 +30,7 @@ CREATE TABLE Patients
     address_2 VARCHAR(255),
     city VARCHAR(255),
     [state] VARCHAR(255), /*state is a SQL keyword*/
-    zip_code INT(10),
+    zip_code INT(5),
     prev_first_name VARCHAR(35),
     prev_middle_name VARCHAR(35),
     prev_last_name VARCHAR(35),
