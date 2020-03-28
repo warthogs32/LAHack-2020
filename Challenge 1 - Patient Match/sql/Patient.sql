@@ -24,13 +24,13 @@ CREATE TABLE Patients
     first_name VARCHAR(35) NOT NULL,
     last_name VARCHAR(35) NOT NULL,
     middle_name VARCHAR(35),
-    date_of_birth VARCHAR(10) NOT NULL,
+    date_of_birth DATE NOT NULL,
     sex VARCHAR(20),
     address_1 VARCHAR(255),
     address_2 VARCHAR(255),
     city VARCHAR(255),
     [state] VARCHAR(255), /*state is a SQL keyword*/
-    zip_code VARCHAR(10), /* XXXXX-XXXX accounting for +4 extension */
+    zip_code INT(10),
     prev_first_name VARCHAR(35),
     prev_middle_name VARCHAR(35),
     prev_last_name VARCHAR(35),
