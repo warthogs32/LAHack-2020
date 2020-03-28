@@ -38,7 +38,7 @@ CREATE TABLE Patients
     prev_address2 VARCHAR(255),
     prev_city VARCHAR(255),
     prev_state VARCHAR(255),
-    prev_zip_code VARCHAR(10)
+    prev_zip_code INT(5)
 	
 );
 GO
