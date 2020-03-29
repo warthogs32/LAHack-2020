@@ -94,7 +94,8 @@ namespace PatientMatching.Repositories
             {
                 foreach (List<PatientRecord> record in RecordList)
                 {
-                    foreach (PatientRecord patient in record)
+                    // foreach (PatientRecord patient in record)
+                    for(int i = )
                     {
                         
                     }
@@ -107,7 +108,9 @@ namespace PatientMatching.Repositories
             //assuming that address format is number street, where number precedes
 
             List<string> addy = address.Split().ToList();
-            return addy.ElementAt(0);
+            string num = addy.ElementAt(0);
+            num = num.TrimStart('0'); //get rid of leading 0's
+            return num;
         }
     }
 }
