@@ -95,10 +95,6 @@ namespace PatientMatching.Repositories
                 foreach (List<PatientRecord> record in RecordList)
                 {
                     // foreach (PatientRecord patient in record)
-                    for(int i = )
-                    {
-                        
-                    }
                 }
             }
         }
