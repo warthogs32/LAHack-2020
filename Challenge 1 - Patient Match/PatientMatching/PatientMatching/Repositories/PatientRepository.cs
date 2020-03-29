@@ -59,5 +59,22 @@ namespace PatientMatching.Repositories
                 return PatientEntries;
             }
         }
+
+
+        private void GroupPatients(List<PatientRecord> PatientEntries)
+        {
+            List <List<PatientRecord>> RecordList = new List<List<PatientRecord>>();
+            /*
+                first group into broad, general groups based on LAST name
+            */
+            PatientRecord patient;
+            foreach(PatientRecord entry in PatientEntries)
+            {
+                CurrentLastName = entry.LastName;
+                foreach(List)
+            }
+
+
+
+        }
     }
-}

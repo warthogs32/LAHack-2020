@@ -32,7 +32,6 @@
     protected override async Task OnInitializedAsync() 
     {
         HttpResponseMessage response = await Http.GetAsync("http://localhost:50002/api/patients/getAllRecords");
-        response.EnsureSuccessStatusCode();
         var jsonResponse = await response.Content.ReadAsStringAsync();
         var result = JsonConvert.DeserializeObject<List<PatientRecord>>(jsonResponse);
         _patients = result;
