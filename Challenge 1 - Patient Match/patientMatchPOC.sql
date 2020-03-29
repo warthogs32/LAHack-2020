@@ -237,7 +237,6 @@ RETURN
 IF OBJECT_ID('tempdb..#tmpReview') IS NOT NULL
 	DROP TABLE #tmpReview
 	
-
 SELECT
 	COUNT(DISTINCT TM.idx) #Occurrence
   , TM.hashID
