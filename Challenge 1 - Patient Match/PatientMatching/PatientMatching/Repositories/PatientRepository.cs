@@ -13,8 +13,8 @@ namespace PatientMatching.Repositories
         {
             List<PatientRecord> PatientEntries = new List<PatientRecord>();
             try
-            {             
-                PatientRecord retrievedRecord;  
+            {
+                PatientRecord retrievedRecord;
                 using (SqlConnection conn = new SqlConnection(PatientMatching.Resource1.ConnectString))
                 {
                     conn.Open();
@@ -63,18 +63,51 @@ namespace PatientMatching.Repositories
 
         private void GroupPatients(List<PatientRecord> PatientEntries)
         {
-            List <List<PatientRecord>> RecordList = new List<List<PatientRecord>>();
+            List<List<PatientRecord>> RecordList = new List<List<PatientRecord>>();
             /*
                 first group into broad, general groups based on LAST name
             */
-            PatientRecord patient;
-            foreach(PatientRecord entry in PatientEntries)
+            foreach (PatientRecord entry in PatientEntries)
             {
-                CurrentLastName = entry.LastName;
-                foreach(List)
+
+                string CurrentLastName = entry.LastName;
+                foreach (List<PatientRecord> record in RecordList)
+                {
+                    foreach (PatientRecord patient in record)
+                    {
+                        if (patient.LastName.Equals(CurrentLastName))
+                        {
+                            record.Add(patient); //duplicate patient
+                        }
+                    }
+                }
+                //patient does not exist yet, add into RecordList
+                RecordList.Add(new List<PatientRecord>() { entry });
             }
 
+            /*
+            Now filter by address
+            Go into master list, check each individual lists 
+            and see if their addresses are the same. how
+            */
+            foreach (PatientRecord entry in PatientEntries)
+            {
+                foreach (List<PatientRecord> record in RecordList)
+                {
+                    foreach (PatientRecord patient in record)
+                    {
+                        
+                    }
+                }
+            }
+        }
 
+        private string ExtractNum(string address)
+        {
+            //assuming that address format is number street, where number precedes
 
+            List<string> addy = address.Split().ToList();
+            return addy.ElementAt(0);
         }
     }
+}
