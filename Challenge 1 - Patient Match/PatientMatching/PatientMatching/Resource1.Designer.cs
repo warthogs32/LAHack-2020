@@ -61,7 +61,7 @@ namespace PatientMatching {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data Source=atascadero.jj-jj.org,3184;Initial Catalog=lahacks2020;User ID=patientmatching2020;Password=warthogs;.
+        ///   Looks up a localized string similar to Data Source=atascadero.jj-jj.org,3184;Initial Catalog=lahacks2020;User ID=patientmatch2020;Password=warthogs;.
         /// </summary>
         internal static string ConnectString {
             get {

@@ -7,7 +7,6 @@ namespace PatientMatching.Models
 {
     public class PatientRecord
     {
-        public int PatientId { get; set; } 
         public string AccountNum { get; set; }
         public string FirstName { get; set; }
         public string MiddleInitial { get; set; }
@@ -27,7 +26,6 @@ namespace PatientMatching.Models
         public string PreviousCity { get; set; }
         public string PreviousState { get; set; }
         public int PreviousZipCode { get; set; }
-
 
     }
 }

@@ -20,7 +20,7 @@ namespace PatientMatching.Controllers
         [Route("getAllRecords/")]
         [ResponseType(typeof(GetAllPatientRecordsResponseDTO))]
         [HttpGet]
-        public GetAllPatientRecordsResponseDTO GetAllEvents()
+        public GetAllPatientRecordsResponseDTO GetAllPatients()
         {
             List<PatientRecord> allPatients = _patientRepo.GetAllPatientRecords();
             return new GetAllPatientRecordsResponseDTO()

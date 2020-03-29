@@ -15,7 +15,7 @@ namespace PatientMatching.Repositories
             try
             {             
                 PatientRecord retrievedRecord;  
-                using (SqlConnection conn = new SqlConnection())
+                using (SqlConnection conn = new SqlConnection(PatientMatching.Resource1.ConnectString))
                 {
                     conn.Open();
                     string getPatientsQuery = "select * from dbo.DataExport";
@@ -27,18 +27,17 @@ namespace PatientMatching.Repositories
                             {
                                 retrievedRecord = new PatientRecord()
                                 {
-                                    PatientId = Int32.Parse(reader["PatientID"].ToString()),
                                     AccountNum = reader["AccountNum"].ToString(),
                                     FirstName = reader["FirstName"].ToString().ToUpper(),
                                     MiddleInitial = reader["MiddleInitial"].ToString().ToUpper(),
                                     LastName = reader["LastName"].ToString().ToUpper(),
-                                    DateOfBirth = DateTime.Parse(reader["DateOfBirth"].ToString()),
+                                    DateOfBirth = string.IsNullOrEmpty(reader["DateOfBirth"].ToString()) ? DateTime.MinValue : DateTime.Parse(reader["DateOfBirth"].ToString()),
                                     Sex = reader["Sex"].ToString().ToUpper(),
                                     CurrentStreet1 = reader["CurrentStreet1"].ToString().ToUpper(),
                                     CurrentStreet2 = reader["CurrentStreet2"].ToString().ToUpper(),
                                     CurrentCity = reader["CurrentCity"].ToString().ToUpper(),
                                     CurrentState = reader["CurrentState"].ToString().ToUpper(),
-                                    CurrentZipCode = Int32.Parse(reader["CurrentZipCode"].ToString()),
+                                    CurrentZipCode = string.IsNullOrEmpty(reader["CurrentZipCode"].ToString()) ? 0 : Int32.Parse(reader["CurrentZipCode"].ToString()),
                                     PreviousFirstName = reader["PreviousFirstName"].ToString().ToUpper(),
                                     PreviousMiddleInitial = reader["PreviousMiddleInitial"].ToString().ToUpper(),
                                     PreviousLastName = reader["PreviousLastName"].ToString().ToUpper(),
@@ -46,7 +45,7 @@ namespace PatientMatching.Repositories
                                     PreviousStreet2 = reader["PreviousStreet2"].ToString().ToUpper(),
                                     PreviousCity = reader["PreviousCity"].ToString().ToUpper(),
                                     PreviousState = reader["PreviousState"].ToString().ToUpper(),
-                                    PreviousZipCode = Int32.Parse(reader["PreviousZipCode"].ToString())
+                                    PreviousZipCode = string.IsNullOrEmpty(reader["PreviousZipCode"].ToString()) ? 0 : Int32.Parse(reader["PreviousZipCode"].ToString())
                                 };
                                 PatientEntries.Add(retrievedRecord);
                             }
