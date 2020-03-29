@@ -1,0 +1,44 @@
+﻿@page "/patientdata"
+@using PatientMatching.Models
+@using System.Net.Http
+@using Newtonsoft.Json
+<h3>Patient Data</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Temp. (C)</th>
+            <th>Temp. (F)</th>
+            <th>Summary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var patient in _patients)
+        {
+            <tr>
+                <td>@patient.AccountNum</td>
+                <td>@patient.CurrentCity</td>
+                <td>@patient.CurrentState</td>
+                <td>@patient.DateOfBirth</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    HttpClient Http;
+    private List<PatientRecord> _patients = new List<PatientRecord>();
+    protected override async Task OnInitializedAsync() 
+    {
+        HttpResponseMessage response = await Http.GetAsync("http://localhost:50002/api/patients/getAllRecords");
+        response.EnsureSuccessStatusCode();
+        var jsonResponse = await response.Content.ReadAsStringAsync();
+        var result = JsonConvert.DeserializeObject<List<PatientRecord>>(jsonResponse);
+        _patients = result;
+
+    }
+
+
+
+}
